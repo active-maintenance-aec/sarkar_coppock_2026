@@ -1,0 +1,9 @@
+control,outcome,expected
+no fault,passed,passed
+a page value mistyped,halted,halted
+a claim with no computed value,halted,halted
+a duplicated claim id,halted,halted
+a spine id with no row,halted,halted
+a mismatch the spine does not report,halted,halted
+a spine entry on a claim that holds,halted,halted
+a table number altered on the page,halted,halted

@@ -1,0 +1,210 @@
+---
+title: "Errata"
+subtitle: "On Sarkar and Coppock (2026), *American Political Science Review*"
+format:
+  pdf:
+    output-file: sarkar_coppock_2026_errata.pdf
+    geometry: margin=1.25in
+    fontsize: 11pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(here)
+library(tidyverse)
+here::i_am("errata.qmd")
+
+page <- read_csv(here("maintained", "output", "page_values.csv"), show_col_types = FALSE)
+value <- \(id) page$value_rewrite[page$claim_id == id]
+number_word <- \(n) c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine")[n]
+
+significant <- read_csv(here("maintained", "output", "significant_estimates.csv"), show_col_types = FALSE)
+ranges <- read_csv(here("maintained", "output", "outcome_ranges.csv"), show_col_types = FALSE)
+negative_ates <- significant |> filter(kind == "ate", estimate < 0) |> arrange(study_id)
+stopifnot(setequal(negative_ates$study_id, c("glazier_2013_study_1", "mcdaniel_miller_2018_study_2")))
+mcdaniel <- negative_ates |> filter(str_starts(study_id, "mcdaniel"))
+differences <- significant |> filter(str_starts(kind, "difference"))
+survivors <- differences |> filter(fdr <= 0.05)
+stopifnot(nrow(differences) == value("dic_significant_total"), nrow(survivors) == 1, str_starts(survivors$study_id, "severson"))
+
+hc1 <- ranges |> filter(str_detect(se_type, "HC1"))
+stopifnot(hc1$script == "severson_coleman_2015_study_1_analysis.R")
+weighted <- ranges |> filter(str_detect(weights, "weights")) |> pull(script) |> unique()
+stopifnot(setequal(str_extract(weighted, "^[a-z]+"), c("demora", "glazier")))
+outcome_lengths <- ranges$high - ranges$low
+stopifnot(all(outcome_lengths <= 1))
+
+papers <- value("abstract_papers")
+design_papers <- value("design_papers")
+mu <- sprintf("%.1f", value("rm_mu"))
+ratio <- value("rg_tau_ratio")
+stopifnot(ratio > 0.6, ratio < 0.72)
+sig_total <- value("rm_significant_total")
+outcomes <- value("f47_outcomes")
+not_applicable <- value("f47_outcomes_not_applicable")
+stopifnot(outcomes == not_applicable + value("f47_outcomes_consistent") + value("f47_outcomes_inconsistent"))
+us <- value("app_e_us")
+africa <- value("app_e_africa")
+africa_n <- value("app_e_africa_countries")
+omitted <- value("app_g_excluded")
+
+# Figure H.17 prints ceiling(share * 100) / 100, so its labels sum to more than 1.
+bins <- significant |> filter(kind == "ate") |> mutate(bin = cut(p.value, c(0, 0.01, 0.02, 0.03, 0.04, 0.05))) |> count(bin, .drop = FALSE) |> mutate(share = n / sum(n))
+printed_labels <- ceiling(bins$share * 100) / 100
+stopifnot(isTRUE(all.equal(printed_labels, c(0.43, 0.15, 0.15, 0.08, 0.22))))
+rounded_labels <- sprintf("%.2f", bins$share)
+```
+
+```{r entries}
+# THE ERRATA SPINE. Numbering is APPEND-ONLY once this note is public. [[...]] marks the span that changes.
+entries <- tribble(
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
+
+  1, "quantity", "pipeline", "correction",
+  "The number of papers",
+  "abstract, p. 1, and p. 5",
+  "drawn from 43 studies reported in 26 papers / In total, we considered 76 studies reported in 55 papers",
+  str_glue("drawn from 43 studies reported in [[{papers}]] papers / In total, we considered 76 studies reported in [[{design_papers}]] papers"),
+  "The count takes distinct keys in `study_manifest.xlsx`, where Wallsten and Nteta's (2016) studies 4, 5, and 6 carry the keys `wallsten_nteta_2017`, `_2018`, and `_2019` (a spreadsheet autofill). Their `year` and `display_text` columns say 2016. The deposit's `in_text_claims.R` reproduces the printed counts because it reads the same keys.",
+  "abstract_papers;design_papers", str_c(papers, ";", design_papers),
+
+  2, "quantity", "pipeline", "correction",
+  "The summary estimate",
+  "p. 11",
+  "Our random-effects summary estimate is 1.1 points (0–100 scale) with a standard error of 0.8 points",
+  str_glue("Our random-effects summary estimate is [[{mu}]] points (0–100 scale) with a standard error of 0.8 points"),
+  str_glue("The estimate is {sprintf('%.2f', value('rm_mu'))} points, and Table 4 prints 0.012. It remains not statistically significant."),
+  "rm_mu", mu,
+
+  3, "quantity", "pipeline", "correction",
+  "Half as large",
+  "p. 12 and p. 3",
+  "the estimated standard deviation is half as large at 2.4 points / with a standard deviation half as large at 2 points",
+  "the estimated standard deviation is [[about two-thirds as large]] at 2.4 points / with a standard deviation [[about two-thirds as large]] at 2 points",
+  str_glue("The two standard deviations are {sprintf('%.1f', value('rg_tau'))} and {sprintf('%.1f', value('rm_tau'))} points, a ratio of {sprintf('%.2f', ratio)}. The introduction's 2 and 4 are half of one another only as rounded."),
+  "rg_tau_ratio", sprintf("%.2f", ratio),
+
+  4, "quantity", "pipeline", "correction",
+  "The significant estimates",
+  "p. 11",
+  "Of the 8 significant estimates, 5 (all positive) remain significant",
+  str_glue("Of the [[{sig_total}]] significant estimates, 5 (all positive) remain significant"),
+  "The sentence before it counts 8 positive and 1 negative.",
+  "rm_significant_total", as.character(sig_total),
+
+  5, "quantity", "reading", "correction",
+  "Studies with other outcomes",
+  "p. 19",
+  "Among the 10 studies whose treatment comparisons would have met our inclusion criteria but whose outcomes were not political attitudes, we judged five to be inapplicable, four to be consistent with our results",
+  str_glue("Among the [[{number_word(outcomes)}]] studies whose treatment comparisons would have met our inclusion criteria but whose outcomes were not political attitudes, we judged [[{number_word(not_applicable)}]] to be inapplicable, four to be consistent with our results"),
+  str_glue("The printed five, four, and two sum to 11. Appendix Table F.47 governs: its \"Different outcomes, same treatments\" group has {outcomes} rows ({not_applicable} not applicable, 4 consistent, and 2 inconsistent). The page's \"21 such studies\" counts the table's rows, one of which collects the candidate choice papers; it stands."),
+  "f47_outcomes;f47_outcomes_not_applicable", str_c(outcomes, ";", not_applicable),
+
+  6, "quantity", "pipeline", "correction",
+  "Studies by place, and Figure E.12",
+  "appendix, Section E",
+  "We have 22 studies that randomize a Christian treatment in the United States / 15 total studies in three (sub-Saharan) African countries (Nigeria, Tanzania, and Kenya)",
+  str_glue("We have [[{us}]] studies that randomize a Christian treatment in the United States / [[{africa}]] total studies in [[{number_word(africa_n)}]] (sub-Saharan) African countries ([[Burkina Faso,]] Nigeria, Tanzania, and Kenya)"),
+  str_glue("Figure E.12 omits Grossman, Nomikos, and Siddiqui's two studies in Burkina Faso, because `countries.csv` spells the country \"Burkina\" and the study manifest \"Burkina Faso\", so the join drops them. Its Burkina Faso row should show 2 under Islam, and its United States row correctly shows {us}. The figure is not reprinted here. One Nigerian study appears under both traditions, which is why the figure's cells in its three countries sum to 15 where those countries hold 14 studies."),
+  "app_e_us;app_e_africa;app_e_africa_countries", str_c(us, ";", africa, ";", africa_n),
+
+  7, "quantity", "pipeline", "correction",
+  "The omitted estimates",
+  "appendix, Section G",
+  "Among those 248 estimates that are reported in the literature but are omitted from our meta-analysis",
+  str_glue("Among those [[{omitted}]] estimates that are reported in the literature but are omitted from our meta-analysis"),
+  str_glue("248 is all the reported estimates. The 82% that follows is computed on the {omitted} omitted ones, and it holds."),
+  "app_g_excluded_sentence", as.character(omitted),
+
+  8, "description", "pipeline", "brief",
+  "Which estimates are negative",
+  "appendix, Section F",
+  "are observed in our set of reanalyzed studies (with one exception (Glazier 2013)) / Again with only one exception (Severson and Coleman 2015), we do not observe heterogeneity",
+  "are observed in our set of reanalyzed studies (with [[two exceptions (Glazier 2013; McDaniel and Miller 2018)]]) / Again with only one exception [[after the false discovery rate adjustment]] (Severson and Coleman 2015), we do not observe heterogeneity",
+  str_glue("Against a secular message, McDaniel and Miller's study 2 is {sprintf('%.3f', mcdaniel$estimate)} (p = {sprintf('%.3f', mcdaniel$p.value)}). The main text reports {nrow(differences)} significant differences-in-CATEs of {value('dic_total')}, and only Severson and Coleman's survives the adjustment."),
+  "", NA_character_,
+
+  9, "description", "pipeline", "brief",
+  "Standard errors",
+  "p. 10",
+  "We report HC2 robust standard errors in all cases.",
+  "We report HC2 robust standard errors in [[nearly]] all cases.",
+  "Severson and Coleman's CATEs by religiosity use HC1, in both the original-scale and standardized scripts, since HC2 is undefined in the high-religiosity group of 8 subjects (leverage at 1). One standardized estimate for Blair et al.'s study 2 also uses HC1.",
+  "", NA_character_,
+
+  10, "description", "pipeline", "brief",
+  "Some estimates are weighted",
+  "p. 10",
+  "we estimate average treatment effects (ATEs) with ordinary least squares (OLS) regressions",
+  "we estimate average treatment effects (ATEs) with ordinary least squares (OLS) regressions [[(survey-weighted for DeMora et al. 2024 and Glazier 2013)]]",
+  "The analysis scripts for these two papers pass `weights` to `lm_robust`. Neither the article nor its appendix mentions weights. Some DeMora et al. calls for study 1 omit them.",
+  "", NA_character_,
+
+  11, "label", "pipeline", "brief",
+  "Table titles",
+  "appendix, Tables H.49 and H.50",
+  "Table H.49: Precision effect tests (Religious Messages) / Table H.50: Precision effect tests (Religious Messages)",
+  "Table H.49: Precision effect tests (Religious [[Gloss]]) / Table H.50: Precision effect tests (Religious [[Endorsements]])",
+  "The script repeats one title. The sample sizes, 14 and 8, identify the tables. Only the titles change.",
+  "", NA_character_,
+
+  12, "label", "pipeline", "brief",
+  "The labels on Figure H.17",
+  "appendix, Figure H.17",
+  "0.43, 0.15, 0.15, 0.08, 0.22",
+  str_glue("[[{str_flatten_comma(rounded_labels)}]]"),
+  "The script labels the bins with `ceiling(prop * 100) / 100`, so the printed shares sum to 1.03. Only the labels change, and the text's 43% holds.",
+  "", NA_character_,
+
+  13, "label", "reading", "brief",
+  "A figure label",
+  "Figures 8 to 10, for example p. 15",
+  "Badrinathan and Chauchard (2021), India",
+  "[[Chauchard and Badrinathan (2025)]], India",
+  "Figures 2 to 7 and Table 1 give the study as Chauchard and Badrinathan (2025). Only the label changes.",
+  "", NA_character_,
+
+  14, "wording", "reading", "brief", "Wording, main text", "pp. 5, 7, 8, 13, 14, 15, 18, and 20",
+  "Slothus, Skytte, and Bisgaard / the Open Science Foundation (OSF) / Eom et al (2021) / The forgoing section / estimates and meta-analytic average; / for the average sample average treatment / we also how the / Secular SATES / both the McClendon (2019) and Djupe and Smith (2019) included / American Political Science Annual Conference",
+  "[[Slothuus]], Skytte, and Bisgaard / the Open Science [[Framework]] (OSF) / Eom et al[[.]] (2021) / The [[foregoing]] section / estimates and meta-analytic [[averages]]; / for the [[sample average treatment effect]] / we also [[show]] how the / Secular [[SATEs]] / both McClendon (2019) and Djupe and Smith (2019) included / American Political Science [[Association]] Annual Conference",
+  "", "", NA_character_,
+
+  15, "wording", "reading", "brief", "Wording, appendix", "appendix, Sections F, G, and H",
+  "the experimental religion and literature politics / Among those that we formally meta-analyzing / have shown that that / Sarkar, Elverdin, and Lucek (Forthcoming)",
+  "the experimental religion and [[politics literature]] / Among those that we formally [[meta-analyze]] / have shown [[that]] / Sarkar, Elverdin, and Lucek [[(2025)]]",
+  "", "", NA_character_
+) |>
+  mutate(across(c(title, published, corrected, note, claim_ids, corrected_values), as.character))
+
+stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry),
+          all(!is.na(entries$corrected_values) == (entries$class == "quantity")))
+
+# Each corrected value must sit inside a marked span of its sentence, in numerals or spelled, or in the note.
+values_in_spans <- function(corrected, values, note) {
+  spans <- str_c(str_extract_all(corrected, "\\[\\[.*?\\]\\]")[[1]], collapse = " ")
+  numbers <- str_split(values, ";")[[1]]
+  spelled <- map_chr(numbers, \(x) if (str_detect(x, "^[1-9]$")) number_word(as.numeric(x)) else x)
+  all(str_detect(str_c(spans, " ", note), fixed(numbers)) | str_detect(spans, fixed(spelled)))
+}
+quantities <- entries |> filter(class == "quantity")
+stopifnot(all(pmap_lgl(list(quantities$corrected, quantities$corrected_values, quantities$note), values_in_spans)),
+          all(str_count(quantities$claim_ids, ";") == str_count(quantities$corrected_values, ";")))
+
+bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
+emit_entry <- function(n) {
+  e <- entries |> filter(entry == n)
+  cat("\n\n## ", e$entry, ". ", e$title, "\n\nPublished, ", e$location, ":\n\n> ", bold(e$published), sep = "")
+  cat("\n\nCorrected:\n\n> ", bold(e$corrected), sep = "")
+  cat("\n\n", e$note, "\n", sep = "")
+}
+```
+
+This note lists corrections to "The Effects of Religious Messages and Endorsements on Political Attitudes: A Meta-Reanalysis," published in the *American Political Science Review*, doi [10.1017/S0003055426101695](https://doi.org/10.1017/S0003055426101695). None changes a conclusion of the article. Every shipped estimate reproduces on rerun, so the errors below lie in the text, the labels, and one metadata sheet, and not in the estimates. Bold marks each change. Passages separated by a slash are separate sentences or labels. The analysis is in the repository `sarkar_coppock_2026`.
+
+```{r article-entries, results="asis"}
+walk(entries$entry, emit_entry)
+```
+
+```{r emit-spine}
+write_csv(entries, here("errata_entries.csv"))
+```
