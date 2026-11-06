@@ -1,0 +1,39 @@
+# sarkar_coppock_2026: findings so far (2026-11-06, driver session 6)
+
+Working draft for the next session. It is not an errata spine. **No quote below has been checked on a rendered page image**: all come from `pdftotext`, so each must be read on the page before filing. Values marked "measured" were computed from the deposit's SHIPPED `estimates/` and `metadata/` under R 4.6.1 and metafor 5.0.1, and must be recomputed from the stripped rerun.
+
+## Candidate entries, measured
+
+| Where | Published | Corrected | Evidence |
+|---|---|---|---|
+| Abstract, p. 1 | 58 treatment-outcome pairs drawn from 43 studies reported in 26 papers | 23 papers | `study_manifest.xlsx` gives Wallsten and Nteta (2016) studies 4, 5, and 6 the `bibtexkey` values `wallsten_nteta_2017`, `_2018`, and `_2019`: a spreadsheet autofill. Their `year` and `display_text` say 2016. The 26 distinct keys are 23 papers, which matches the 23 folders in `original_materials/` and appendix sections C.1 onward (confirm the section count). |
+| Design, p. 5 | 76 studies reported in 55 papers | 52 papers | Same autofill, same three keys. Sperber 2022 and Sperber 2024/2025 are kept as two papers. |
+| Results, p. 11 | random-effects summary estimate is 1.1 points | 1.2 | mu = 0.01174511, which rounds to 1.2; Table 4 prints 0.012. The deposit's `in_text_claims.R` comment also says 1.1. SE 0.8 and tau 3.6 hold. |
+| Results, p. 11 | Of the 8 significant estimates, 5 (all positive) | 9 | The two preceding clauses give 8 positive and 1 negative. Measured: 8, 1, FDR positive 5, FDR negative 0. |
+| Results, p. 12, and Introduction, p. 3 | estimated standard deviation is half as large at 2.4 points; a standard deviation half as large at 2 points | about two-thirds as large (wording is a judgment, check the minimal edit) | tau 0.02429 against 0.03570, a ratio of 0.68. The introduction's ratio holds only on its rounded 2 and 4. Unhedged, so it counts under the 2026-08-10 hedge rule. |
+| Discussion, p. 19 | Among the 10 studies ... we judged five to be inapplicable, four to be consistent ... and two to be inconsistent | 7 studies, one inapplicable | 5 + 4 + 2 = 11, not 10. Table F.47's "Different outcomes, same treatments" group has 7 rows: Not applicable 1 (Djupe and Calfano 2009), Consistent 4, Inconsistent 2. The table governs. The closing "10 studies consistent and 2 inconsistent" and "remaining five" both hold on the table. |
+| Discussion, p. 19 | we systematically review 21 such studies | 30 (check) | Table F.47 has 21 rows, and one row holds 10 candidate choice papers, so 4 + 7 + 7 + 12 = 30. Same entry as the row above, one cause. |
+| Appendix Tables H.49 and H.50, p. 87 | Precision effect tests (Religious Messages), three times | Religious Gloss; Religious Endorsement | Label-only entry. `figures_H17_...R` lines 199, 220, and 242 use one title. N = 36, 14, and 8 confirm which is which. |
+
+## Candidate entries, wording (one line each, appended after the above)
+
+Main text: "Open Science Foundation (OSF)" p. 7 (the Open Science Framework); "Slothus" pp. 5 and references (Slothuus, confirm on Crossref); "we also how" p. 15; "forgoing" p. 13; "meta-analytic average;" p. 13; "the average sample average treatment" and "shows that average estimate" p. 14; "SATES" p. 15; "both the McClendon (2019) and Djupe and Smith (2019) included" note 4, p. 18; "Eom et al (2021)" Table 1; "American Political Science Annual Conference" acknowledgments. Figures 8 to 10 labels: "Badrinathan and Chauchard (2021)", "Demora et al.", "Grossman et al.", and "McClendon and Riedl" against the labels of Figures 2 to 7 (label-only; `display_text` versus `display_text_table`, not yet traced).
+
+Appendix: "religion and literature politics" and "that we formally meta-analyzing" section G; "shown that that" and the unattached "(Christensen, Freese, and Miguel 2019) regress" section H; "mouthers" C.1 (may be the study's own text; check before filing); "Sperber ... (2024)" and "Sarkar, Elverdin, and Lucek (Forthcoming)" against the main text's 2025 references.
+
+## Open, not yet measured
+
+- **Rerun.** `maintained/run_archive.R` was started and had logged 103 scripts at handoff. Its status CSV is not written until it ends. Read `maintained/output/archive_run_status.csv` if it exists; otherwise rerun.
+- **Range check failed, needs a fix.** `/tmp/sarkar/ranges.R` hit `haven_labelled` columns; wrap in `as.numeric`. The article says every outcome falls in 0 to 1, and nothing has tested that yet.
+- **Polarity.** The article says higher values mean the message's intended direction. Rahmani's Conservative treatment reads +0.10 (0.04), and Table 1 calls it a message against women's empowerment with the outcome "support for women's political leadership". Masoud's Patriarchal and Anti-wage limit arms and Nyonzo's child marriage outcome have the same shape. Read the cleaning and analysis scripts. A wrong sign here would move published estimates in a coauthored paper, so any such finding goes through the queue.
+- **Appendix section F's opening** says "only one exception (Severson and Coleman 2015)" to no heterogeneity, while the main text has 3 of 66 significant; find which three. It also says the one negative effect is Glazier (2013), while Figure 3 has its own negative significant estimate (identify it). Its rule for "inconsistent" (a negative ATE or strong heterogeneity) does not cover Condra et al.'s large positive effect, which is coded Inconsistent. Siegel and Badaan's row says the findings "contrast" with the meta-analysis and is coded Consistent.
+- **Appendix section E:** "15 total studies in three (sub-Saharan) African countries (Nigeria, Tanzania, and Kenya)" omits Burkina Faso (Grossman et al.). Recount from the manifest, including the 22, 5, and 1.
+- **Figure H.17** labels use `ceiling(prop * 100) / 100` (script line 102), so they sum to 1.03. The text's 43% is fine at 6 of 14 if that is the count; confirm.
+- **Straw-man coding:** "We hand-coded each abstract" with 64%, 32%, and 46% rests on 22 rows against 23 papers. `nyonzo_etal_2025` is absent. The sheet's keys also carry typos (`grossmon`, `harirson`). The percentages reproduce on the 22.
+- **Appendix section G's "those 248 estimates ... omitted"** (`app_raw` line 5768): the omitted count is 162, and the 82% is computed on 162. The deposit's comment also says "in those 43 papers" where the appendix says studies; read the appendix sentence on the page.
+- **Introduction, p. 3:** the Sperber, McClendon, and Kaaba (2022) citation for "null findings" on political engagement, while Table F.47 gives that paper a 7.2-point difference and gives the 2024 paper the null. Probably note form or README only.
+- **Not yet compared:** Table 4 against the rerun at each cell (the shipped `.tex` agrees on row order with the page, and the two Q-test sentences on p. 13 hold: religiosity 0.564, 0.070, and 0.304; affiliation 0.024, 0.139, and 0.336); appendix Tables A and C.1 to C.46 cell by cell against the rerun's `.tex`; the 8-, 10-, and 11-point estimates; intro's CATE statements (no block in `in_text_claims.R`); "31 and 32" estimands in the narrative reviews (no block); Tables 1 to 3 against the manifest; the unread lines 1300 to 1380 of the article; appendix section B prose; the scripts' `lm_robust` defaults against "HC2" (default is HC2; confirm no `se_type` override).
+
+## Checked and holding (measured on shipped files)
+
+58, 43; 36, 14, and 8; 124, 86, and 38 with 31% and 44%; 76 studies; 37, 14, 11, 7, 5, 5; 58 and 46 distinct estimands; range -14 to 31; rg 0.9 (1.0), Q p 0.032; re 1.0 (1.3), Q p 0.005, tau 2.8; FDR counts on all three; 22 with 2 significant and 0 after FDR; 44 with 1 significant and 1 after FDR; 3 of 66; 10 and 10 with 4 overlapping; 248, 86, 162, 58, 32, and 82%; 64%, 32%, and 46% on 22 rows. These are the deposit's values on the shipped files under current packages; they do not show that the deposit's cleaning is right.
