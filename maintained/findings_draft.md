@@ -1,6 +1,6 @@
 # sarkar_coppock_2026: findings so far (2026-11-06, driver session 6)
 
-Working draft for the next session. It is not an errata spine. **No quote below has been checked on a rendered page image**: all come from `pdftotext`, so each must be read on the page before filing. Values marked "measured" were computed from the deposit's SHIPPED `estimates/` and `metadata/` under R 4.6.1 and metafor 5.0.1, and must be recomputed from the stripped rerun.
+Working draft for the next session. It is not an errata spine. **No quote below has been checked on a rendered page image**: all come from `pdftotext`, so each must be read on the page before filing. Values marked "measured" were computed from the deposit's SHIPPED `estimates/` and `metadata/` under R 4.6.1 and metafor 5.0.1, and the estimate files they rest on match the stripped rerun.
 
 ## Candidate entries, measured
 
@@ -23,7 +23,7 @@ Appendix: "religion and literature politics" and "that we formally meta-analyzin
 
 ## Open, not yet measured
 
-- **Rerun.** `maintained/run_archive.R` was started and had logged 103 scripts at handoff. Its status CSV is not written until it ends. Read `maintained/output/archive_run_status.csv` if it exists; otherwise rerun.
+- **Rerun: done.** The stripped rerun finished after the handoff: 109 of 109 scripts exit 0, and all 278 shipped `estimates/` files are reproduced, with a largest difference in `estimate` or `std.error` of 7.0e-15. Wallsten and Nteta's cleaning script is entirely commented out, so that study's shipped cleaned file is an input the rerun cannot test, and a clean exit from it means nothing. The output tables, figures, and `in_text_claims.R` log have not been compared with the deposit or the page. Reuse it with `SARKAR_REUSE_ARCHIVE_RUN=TRUE`.
 - **Range check failed, needs a fix.** `/tmp/sarkar/ranges.R` hit `haven_labelled` columns; wrap in `as.numeric`. The article says every outcome falls in 0 to 1, and nothing has tested that yet.
 - **Polarity.** The article says higher values mean the message's intended direction. Rahmani's Conservative treatment reads +0.10 (0.04), and Table 1 calls it a message against women's empowerment with the outcome "support for women's political leadership". Masoud's Patriarchal and Anti-wage limit arms and Nyonzo's child marriage outcome have the same shape. Read the cleaning and analysis scripts. A wrong sign here would move published estimates in a coauthored paper, so any such finding goes through the queue.
 - **Appendix section F's opening** says "only one exception (Severson and Coleman 2015)" to no heterogeneity, while the main text has 3 of 66 significant; find which three. It also says the one negative effect is Glazier (2013), while Figure 3 has its own negative significant estimate (identify it). Its rule for "inconsistent" (a negative ATE or strong heterogeneity) does not cover Condra et al.'s large positive effect, which is coded Inconsistent. Siegel and Badaan's row says the findings "contrast" with the meta-analysis and is coded Consistent.
