@@ -56,11 +56,11 @@ rounded_labels <- sprintf("%.2f", bins$share)
 ```
 
 ```{r entries}
-# THE ERRATA SPINE. Numbering is APPEND-ONLY once this note is public. [[...]] marks the span that changes.
+# THE ERRATA SPINE. Numbering is by severity block (PROCEDURES.md Stage 4b) and renumbers when a finding lands in an earlier block; renumbered 2026-11-07. [[...]] marks the span that changes.
 entries <- tribble(
   ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
-  1, "quantity", "pipeline", "correction",
+  1, "quantity", "pipeline", "full",
   "The number of papers",
   "abstract, p. 1, and p. 5",
   "drawn from 43 studies reported in 26 papers / In total, we considered 76 studies reported in 55 papers",
@@ -68,7 +68,7 @@ entries <- tribble(
   "The count takes distinct keys in `study_manifest.xlsx`, where Wallsten and Nteta's (2016) studies 4, 5, and 6 carry the keys `wallsten_nteta_2017`, `_2018`, and `_2019` (a spreadsheet autofill). Their `year` and `display_text` columns say 2016. The deposit's `in_text_claims.R` reproduces the printed counts because it reads the same keys.",
   "abstract_papers;design_papers", str_c(papers, ";", design_papers),
 
-  2, "quantity", "pipeline", "correction",
+  2, "quantity", "pipeline", "full",
   "The summary estimate",
   "p. 11",
   "Our random-effects summary estimate is 1.1 points (0–100 scale) with a standard error of 0.8 points",
@@ -76,7 +76,7 @@ entries <- tribble(
   str_glue("The estimate is {sprintf('%.2f', value('rm_mu'))} points, and Table 4 prints 0.012. It remains not statistically significant."),
   "rm_mu", mu,
 
-  3, "quantity", "pipeline", "correction",
+  3, "quantity", "pipeline", "full",
   "Half as large",
   "p. 12 and p. 3",
   "the estimated standard deviation is half as large at 2.4 points / with a standard deviation half as large at 2 points",
@@ -84,7 +84,7 @@ entries <- tribble(
   str_glue("The two standard deviations are {sprintf('%.1f', value('rg_tau'))} and {sprintf('%.1f', value('rm_tau'))} points, a ratio of {sprintf('%.2f', ratio)}. The introduction's 2 and 4 are half of one another only as rounded."),
   "rg_tau_ratio", sprintf("%.2f", ratio),
 
-  4, "quantity", "pipeline", "correction",
+  4, "quantity", "pipeline", "full",
   "The significant estimates",
   "p. 11",
   "Of the 8 significant estimates, 5 (all positive) remain significant",
@@ -92,7 +92,7 @@ entries <- tribble(
   "The sentence before it counts 8 positive and 1 negative.",
   "rm_significant_total", as.character(sig_total),
 
-  5, "quantity", "reading", "correction",
+  5, "quantity", "reading", "full",
   "Studies with other outcomes",
   "p. 19",
   "Among the 10 studies whose treatment comparisons would have met our inclusion criteria but whose outcomes were not political attitudes, we judged five to be inapplicable, four to be consistent with our results",
@@ -100,17 +100,17 @@ entries <- tribble(
   str_glue("The printed five, four, and two sum to 11. Appendix Table F.47 governs: its \"Different outcomes, same treatments\" group has {outcomes} rows ({not_applicable} not applicable, 4 consistent, and 2 inconsistent). The page's \"21 such studies\" counts the table's rows, one of which collects the candidate choice papers; it stands."),
   "f47_outcomes;f47_outcomes_not_applicable", str_c(outcomes, ";", not_applicable),
 
-  6, "quantity", "pipeline", "correction",
+  6, "quantity", "pipeline", "full",
   "Studies by place, and Figure E.12",
-  "appendix, Section E",
+  "app. Section E",
   "We have 22 studies that randomize a Christian treatment in the United States / 15 total studies in three (sub-Saharan) African countries (Nigeria, Tanzania, and Kenya)",
   str_glue("We have [[{us}]] studies that randomize a Christian treatment in the United States / [[{africa}]] total studies in [[{number_word(africa_n)}]] (sub-Saharan) African countries ([[Burkina Faso,]] Nigeria, Tanzania, and Kenya)"),
   str_glue("Figure E.12 omits Grossman, Nomikos, and Siddiqui's two studies in Burkina Faso, because `countries.csv` spells the country \"Burkina\" and the study manifest \"Burkina Faso\", so the join drops them. Its Burkina Faso row should show 2 under Islam, and its United States row correctly shows {us}. The figure is not reprinted here. One Nigerian study appears under both traditions, which is why the figure's cells in its three countries sum to 15 where those countries hold 14 studies."),
   "app_e_us;app_e_africa;app_e_africa_countries", str_c(us, ";", africa, ";", africa_n),
 
-  7, "quantity", "pipeline", "correction",
+  7, "quantity", "pipeline", "full",
   "The omitted estimates",
-  "appendix, Section G",
+  "app. Section G",
   "Among those 248 estimates that are reported in the literature but are omitted from our meta-analysis",
   str_glue("Among those [[{omitted}]] estimates that are reported in the literature but are omitted from our meta-analysis"),
   str_glue("248 is all the reported estimates. The 82% that follows is computed on the {omitted} omitted ones, and it holds."),
@@ -118,7 +118,7 @@ entries <- tribble(
 
   8, "description", "pipeline", "brief",
   "Which estimates are negative",
-  "appendix, Section F",
+  "app. Section F",
   "are observed in our set of reanalyzed studies (with one exception (Glazier 2013)) / Again with only one exception (Severson and Coleman 2015), we do not observe heterogeneity",
   "are observed in our set of reanalyzed studies (with [[two exceptions (Glazier 2013; McDaniel and Miller 2018)]]) / Again with only one exception [[after the false discovery rate adjustment]] (Severson and Coleman 2015), we do not observe heterogeneity",
   str_glue("Against a secular message, McDaniel and Miller's study 2 is {sprintf('%.3f', mcdaniel$estimate)} (p = {sprintf('%.3f', mcdaniel$p.value)}). The main text reports {nrow(differences)} significant differences-in-CATEs of {value('dic_total')}, and only Severson and Coleman's survives the adjustment."),
@@ -142,7 +142,7 @@ entries <- tribble(
 
   11, "label", "pipeline", "brief",
   "Table titles",
-  "appendix, Tables H.49 and H.50",
+  "app. Tables H.49 and H.50",
   "Table H.49: Precision effect tests (Religious Messages) / Table H.50: Precision effect tests (Religious Messages)",
   "Table H.49: Precision effect tests (Religious [[Gloss]]) / Table H.50: Precision effect tests (Religious [[Endorsements]])",
   "The script repeats one title. The sample sizes, 14 and 8, identify the tables. Only the titles change.",
@@ -150,7 +150,7 @@ entries <- tribble(
 
   12, "label", "pipeline", "brief",
   "The labels on Figure H.17",
-  "appendix, Figure H.17",
+  "app. Figure H.17",
   "0.43, 0.15, 0.15, 0.08, 0.22",
   str_glue("[[{str_flatten_comma(rounded_labels)}]]"),
   "The script labels the bins with `ceiling(prop * 100) / 100`, so the printed shares sum to 1.03. Only the labels change, and the text's 43% holds.",
@@ -169,7 +169,7 @@ entries <- tribble(
   "[[Slothuus]], Skytte, and Bisgaard / the Open Science [[Framework]] (OSF) / Eom et al[[.]] (2021) / The [[foregoing]] section / estimates and meta-analytic [[averages]]; / for the [[sample average treatment effect]] / we also [[show]] how the / Secular [[SATEs]] / both McClendon (2019) and Djupe and Smith (2019) included / American Political Science [[Association]] Annual Conference",
   "", "", NA_character_,
 
-  15, "wording", "reading", "brief", "Wording, appendix", "appendix, Sections F, G, and H",
+  15, "wording", "reading", "brief", "Wording, appendix", "app. Sections F, G, and H",
   "the experimental religion and literature politics / Among those that we formally meta-analyzing / have shown that that / Sarkar, Elverdin, and Lucek (Forthcoming)",
   "the experimental religion and [[politics literature]] / Among those that we formally [[meta-analyze]] / have shown [[that]] / Sarkar, Elverdin, and Lucek [[(2025)]]",
   "", "", NA_character_
@@ -206,5 +206,12 @@ walk(entries$entry, emit_entry)
 ```
 
 ```{r emit-spine}
+# The spine's vocabularies are closed (cleanup of 2026-11-07): a value outside them is a
+# typo, and the edition builders read these columns to shape every entry.
+stopifnot(
+  all(entries$class %in% c("quantity", "description", "interpretation", "definition", "label", "float", "cross_reference", "wording", "spelling", "typography", "bibliographic")),
+  all(entries$form %in% c("full", "brief", "note")),
+  all(entries$source %in% c("pipeline", "reading", "reference_audit", "publisher_record", "authors_archive", "proof"))
+)
 write_csv(entries, here("errata_entries.csv"))
 ```
