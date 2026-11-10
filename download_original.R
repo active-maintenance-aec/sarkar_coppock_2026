@@ -26,6 +26,9 @@ if (length(extra) > 0) stop("original/ holds unlisted files: ", str_c(extra, col
 
 unlink(here::here("original_extracted"), recursive = TRUE)
 unzip(zip_path, exdir = here::here("original_extracted"))
+# The zip carries a __MACOSX resource-fork directory, which is not part of the deposit's
+# content and is not in the member manifest; it is discarded, as in the other repositories.
+unlink(here::here("original_extracted", "__MACOSX"), recursive = TRUE)
 paths <- here::here("original_extracted", members$member)
 stopifnot(all(unname(tools::md5sum(paths)) == members$md5), all(file.size(paths) == members$bytes))
 on_disk <- list.files(here::here("original_extracted"), recursive = TRUE, all.files = TRUE, no.. = TRUE)
