@@ -8,6 +8,8 @@
 - [Recorded and not filed](#recorded-and-not-filed)
 - [Not done](#not-done)
 
+**Archived at Zenodo:** [doi:10.5281/zenodo.24168417](https://doi.org/10.5281/zenodo.24168417). This DOI always resolves to the latest release of the maintained version.
+
 ## Summary
 
 The deposit is Harvard Dataverse file 13506181
