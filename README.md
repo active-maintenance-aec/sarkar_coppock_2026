@@ -8,7 +8,10 @@
 - [Recorded and not filed](#recorded-and-not-filed)
 - [Not done](#not-done)
 
-**Archived at Zenodo:** [doi:10.5281/zenodo.24168417](https://doi.org/10.5281/zenodo.24168417). This DOI always resolves to the latest release of the maintained version.
+**Archived at Zenodo:**
+[doi:10.5281/zenodo.24168417](https://doi.org/10.5281/zenodo.24168417).
+This DOI always resolves to the latest release of the maintained
+version.
 
 ## Summary
 
@@ -40,11 +43,11 @@ input the rerun cannot test.
   precision, and 11 disagree, each reported by the spine. These compare
   the page with the deposit’s own pipeline, so a defect in cleaning that
   both inherit would pass.
-- **Tables.** 294 of 294 appendix table rows and Table 4 cells appear on
-  the page. A row is matched as a run of numbers anywhere in the
-  appendix, so this does not show it sits in the right table, and Table
-  4’s cells are matched by membership on their page. Appendix Tables A
-  and H.48 to H.51 are not in this gate.
+- **Tables.** 852 of 852 numbers in 44 tables (Table 4 and appendix
+  Tables C.4 to C.46) appear on the page. A row is matched as a run of
+  numbers anywhere in the appendix, so this does not show it sits in the
+  right table, and Table 4’s cells are matched by membership on their
+  page. Appendix Tables A and H.48 to H.51 are not in this gate.
 - **Outcome ranges.** `maintained/outcome_ranges.R` wraps `lm_robust`
   and records each regression’s outcome. All 34 outcomes span at most
   one scale length, as the article says, three of them reversed to run

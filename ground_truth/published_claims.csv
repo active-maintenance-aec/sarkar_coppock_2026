@@ -1,52 +1,52 @@
-claim_id,location,claim,value_paper,digits
-abstract_pairs,abstract,treatment-outcome pairs,58,0
-abstract_studies,abstract,studies,43,0
-abstract_papers,abstract,papers,26,0
-design_studies,p. 5,studies considered,76,0
-design_papers,p. 5,papers considered,55,0
-rm_k,p. 11,message v. control estimates,36,0
-rm_positive,p. 11,positive and significant,8,0
-rm_negative,p. 11,negative and significant,1,0
-rm_nonsignificant,p. 11,nonsignificant,27,0
-rm_significant_total,p. 11,the significant estimates,8,0
-rm_fdr,p. 11,survive FDR,5,0
-rm_mu,p. 11,summary estimate in points,1.1,1
-rm_se,p. 11,standard error in points,0.8,1
-rm_tau,p. 11,standard deviation in points,3.6,1
-rg_k,p. 12,message v. secular estimates,14,0
-rg_mu,p. 12,average estimate in points,0.9,1
-rg_se,p. 12,standard error in points,1.0,1
-rg_q_p,p. 12,Q-test p-value,0.032,3
-rg_tau,p. 12,standard deviation in points,2.4,1
-rg_tau_ratio,pp. 3 and 12,half as large,0.5,1
-re_k,p. 12,endorsement estimates,8,0
-re_mu,p. 12,average estimate in points,1.0,1
-re_se,p. 12,standard error in points,1.3,1
-re_q_p,p. 12,Q-test p-value,0.005,3
-re_tau,p. 12,standard deviation in points,3,0
-dic_affiliation_k,p. 13,differences by affiliation,22,0
-dic_affiliation_significant,p. 13,significant,2,0
-dic_religiosity_k,p. 13,differences by religiosity,44,0
-dic_religiosity_significant,p. 13,significant,1,0
-dic_religiosity_fdr,p. 13,survive FDR,1,0
-f47_outcomes,p. 19,studies with other outcomes,10,0
-f47_outcomes_not_applicable,p. 19,judged inapplicable,5,0
-f47_outcomes_consistent,p. 19,judged consistent,4,0
-f47_outcomes_inconsistent,p. 19,judged inconsistent,2,0
-f47_rows,p. 19,studies reviewed,21,0
-f47_no_data,p. 19,no data,4,0
-f47_treatments,p. 19,different treatments,7,0
-f47_treatments_not_applicable,p. 19,no direct comparison,5,0
-app_e_us,appendix E,Christian treatments in the US,22,0
-app_e_mena,appendix E,Muslim treatments in MENA,5,0
-app_e_africa,appendix E,studies in Africa,15,0
-app_e_africa_countries,appendix E,African countries,3,0
-app_e_india,appendix E,India,1,0
-app_g_reported,appendix G,reported estimates,248,0
-app_g_included,appendix G,meta-analyzed,86,0
-app_g_excluded,appendix G,those excluded estimates,162,0
-app_g_excluded_sentence,appendix G,those omitted estimates,248,0
-app_g_sole,appendix G,sole estimates,58,0
-app_g_two,appendix G,two total estimates,32,0
-app_g_five_or_fewer,appendix G,five or fewer (percent),82,0
-app_h_first_bin,appendix H,first p-curve bin (percent),43,0
+claim_id,location,claim_type,claim,value_paper,digits,comparison,expect,needs_block,notes
+abstract_pairs,abstract,pipeline,treatment-outcome pairs,58,0,==,NA,TRUE,NA
+abstract_studies,abstract,pipeline,studies,43,0,==,NA,TRUE,NA
+abstract_papers,abstract,pipeline,papers,26,0,==,NA,TRUE,NA
+design_studies,p. 5,pipeline,studies considered,76,0,==,NA,TRUE,NA
+design_papers,p. 5,pipeline,papers considered,55,0,==,NA,TRUE,NA
+rm_k,p. 11,pipeline,message v. control estimates,36,0,==,NA,TRUE,NA
+rm_positive,p. 11,pipeline,positive and significant,8,0,==,NA,TRUE,NA
+rm_negative,p. 11,pipeline,negative and significant,1,0,==,NA,TRUE,NA
+rm_nonsignificant,p. 11,pipeline,nonsignificant,27,0,==,NA,TRUE,NA
+rm_significant_total,p. 11,pipeline,the significant estimates,8,0,==,NA,TRUE,NA
+rm_fdr,p. 11,pipeline,survive FDR,5,0,==,NA,TRUE,NA
+rm_mu,p. 11,pipeline,summary estimate in points,1.1,1,==,NA,TRUE,NA
+rm_se,p. 11,pipeline,standard error in points,0.8,1,==,NA,TRUE,NA
+rm_tau,p. 11,pipeline,standard deviation in points,3.6,1,==,NA,TRUE,NA
+rg_k,p. 12,pipeline,message v. secular estimates,14,0,==,NA,TRUE,NA
+rg_mu,p. 12,pipeline,average estimate in points,0.9,1,==,NA,TRUE,NA
+rg_se,p. 12,pipeline,standard error in points,1.0,1,==,NA,TRUE,NA
+rg_q_p,p. 12,pipeline,Q-test p-value,0.032,3,==,NA,TRUE,NA
+rg_tau,p. 12,pipeline,standard deviation in points,2.4,1,==,NA,TRUE,NA
+rg_tau_ratio,pp. 3 and 12,pipeline,half as large,0.5,1,==,NA,TRUE,Printed as the word half
+re_k,p. 12,pipeline,endorsement estimates,8,0,==,NA,TRUE,NA
+re_mu,p. 12,pipeline,average estimate in points,1.0,1,==,NA,TRUE,NA
+re_se,p. 12,pipeline,standard error in points,1.3,1,==,NA,TRUE,NA
+re_q_p,p. 12,pipeline,Q-test p-value,0.005,3,==,NA,TRUE,NA
+re_tau,p. 12,pipeline,standard deviation in points,3,0,==,NA,TRUE,NA
+dic_affiliation_k,p. 13,pipeline,differences by affiliation,22,0,==,NA,TRUE,NA
+dic_affiliation_significant,p. 13,pipeline,significant,2,0,==,NA,TRUE,NA
+dic_religiosity_k,p. 13,pipeline,differences by religiosity,44,0,==,NA,TRUE,NA
+dic_religiosity_significant,p. 13,pipeline,significant,1,0,==,NA,TRUE,NA
+dic_religiosity_fdr,p. 13,pipeline,survive FDR,1,0,==,NA,TRUE,NA
+f47_outcomes,p. 19,structural,studies with other outcomes,10,0,==,NA,TRUE,"Counts rows of the article's own Table F.47, from the transcription in published_table_f47.csv"
+f47_outcomes_not_applicable,p. 19,structural,judged inapplicable,5,0,==,NA,TRUE,"Counts rows of the article's own Table F.47, from the transcription in published_table_f47.csv"
+f47_outcomes_consistent,p. 19,structural,judged consistent,4,0,==,NA,TRUE,"Counts rows of the article's own Table F.47, from the transcription in published_table_f47.csv"
+f47_outcomes_inconsistent,p. 19,structural,judged inconsistent,2,0,==,NA,TRUE,"Counts rows of the article's own Table F.47, from the transcription in published_table_f47.csv"
+f47_rows,p. 19,structural,studies reviewed,21,0,==,NA,TRUE,"Counts rows of the article's own Table F.47, from the transcription in published_table_f47.csv"
+f47_no_data,p. 19,structural,no data,4,0,==,NA,TRUE,"Counts rows of the article's own Table F.47, from the transcription in published_table_f47.csv"
+f47_treatments,p. 19,structural,different treatments,7,0,==,NA,TRUE,"Counts rows of the article's own Table F.47, from the transcription in published_table_f47.csv"
+f47_treatments_not_applicable,p. 19,structural,no direct comparison,5,0,==,NA,TRUE,"Counts rows of the article's own Table F.47, from the transcription in published_table_f47.csv"
+app_e_us,appendix E,pipeline,Christian treatments in the US,22,0,==,NA,TRUE,NA
+app_e_mena,appendix E,pipeline,Muslim treatments in MENA,5,0,==,NA,TRUE,NA
+app_e_africa,appendix E,pipeline,studies in Africa,15,0,==,NA,TRUE,NA
+app_e_africa_countries,appendix E,pipeline,African countries,3,0,==,NA,TRUE,NA
+app_e_india,appendix E,pipeline,India,1,0,==,NA,TRUE,NA
+app_g_reported,appendix G,pipeline,reported estimates,248,0,==,NA,TRUE,NA
+app_g_included,appendix G,pipeline,meta-analyzed,86,0,==,NA,TRUE,NA
+app_g_excluded,appendix G,pipeline,those excluded estimates,162,0,==,NA,TRUE,NA
+app_g_excluded_sentence,appendix G,pipeline,those omitted estimates,248,0,==,NA,TRUE,NA
+app_g_sole,appendix G,pipeline,sole estimates,58,0,==,NA,TRUE,NA
+app_g_two,appendix G,pipeline,two total estimates,32,0,==,NA,TRUE,NA
+app_g_five_or_fewer,appendix G,pipeline,five or fewer (percent),82,0,==,NA,TRUE,NA
+app_h_first_bin,appendix H,pipeline,first p-curve bin (percent),43,0,==,NA,TRUE,NA

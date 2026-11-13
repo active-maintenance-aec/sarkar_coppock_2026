@@ -23,11 +23,11 @@ library(here)
 library(tidyverse)
 here::i_am("README.qmd")
 gt <- read_csv(here("ground_truth", "sarkar_coppock_2026_ground_truth.csv"), show_col_types = FALSE)
-floats <- read_csv(here("ground_truth", "float_coverage.csv"), show_col_types = FALSE)
+floats <- read_csv(here("ground_truth", "float_coverage.csv"), show_col_types = FALSE) |> filter(!is.na(covered))
 controls <- read_csv(here("ground_truth", "negative_controls.csv"), show_col_types = FALSE)
 spine <- read_csv(here("errata_entries.csv"), show_col_types = FALSE)
 comparison <- read_csv(here("maintained", "output", "archive_output_comparison.csv"), show_col_types = FALSE)
-status <- read_csv(here("maintained", "output", "archive_run_status.csv"), show_col_types = FALSE)
+status <- read_csv(here("ground_truth", "archive_run_status.csv"), show_col_types = FALSE)
 ranges <- read_csv(here("maintained", "output", "outcome_ranges.csv"), show_col_types = FALSE)
 est <- comparison |> filter(kind == "estimates")
 tab <- comparison |> filter(kind == "tables")
@@ -39,14 +39,14 @@ The deposit is Harvard Dataverse file 13506181 (`doi:10.7910/DVN/NHDFFS`). `erra
 
 ## What was run
 
-A stripped rerun (`maintained/run_archive.R`) ran `r nrow(status)` scripts, and `r sum(status$exit == 0)` exit 0. It reproduces all `r nrow(est)` shipped `estimates/` files, with a largest difference in `estimate` or `std.error` of `r signif(max(est$largest_difference), 2)`. Of `r nrow(tab)` output tables, `r sum(tab$same_rows)` match the shipped text. Six differ only in a rule width. The seventh, `selection_model.tex` (Table H.51), differs in value. Its script sets no seed, so a bootstrap is the likely cause, which I did not establish. Lambda1's intervals include 1 for all three estimands in the rerun, so the appendix's verdict holds on this run.
+A stripped rerun (`maintained/run_archive.R`) ran `r nrow(status)` scripts, and `r sum(status$outcome == "clean")` exit 0. It reproduces all `r nrow(est)` shipped `estimates/` files, with a largest difference in `estimate` or `std.error` of `r signif(max(est$largest_difference), 2)`. Of `r nrow(tab)` output tables, `r sum(tab$same_rows)` match the shipped text. Six differ only in a rule width. The seventh, `selection_model.tex` (Table H.51), differs in value. Its script sets no seed, so a bootstrap is the likely cause, which I did not establish. Lambda1's intervals include 1 for all three estimands in the rerun, so the appendix's verdict holds on this run.
 
 The deposit omits Wallsten and Nteta's raw data and its cleaning script is entirely commented out, so that study's shipped cleaned file is an input the rerun cannot test.
 
 ## Checks and what they do not cover
 
-- **Prose values.** `r nrow(gt)` extracted values are compared at the page's precision, and `r sum(gt$match_rewrite == 0)` disagree, each reported by the spine. These compare the page with the deposit's own pipeline, so a defect in cleaning that both inherit would pass.
-- **Tables.** `r sum(floats$covered)` of `r sum(floats$rows)` appendix table rows and Table 4 cells appear on the page. A row is matched as a run of numbers anywhere in the appendix, so this does not show it sits in the right table, and Table 4's cells are matched by membership on their page. Appendix Tables A and H.48 to H.51 are not in this gate.
+- **Prose values.** `r nrow(gt)` extracted values are compared at the page's precision, and `r sum(!gt$match_rewrite)` disagree, each reported by the spine. These compare the page with the deposit's own pipeline, so a defect in cleaning that both inherit would pass.
+- **Tables.** `r sum(floats$covered)` of `r sum(floats$published_numbers)` numbers in `r nrow(floats)` tables (Table 4 and appendix Tables C.4 to C.46) appear on the page. A row is matched as a run of numbers anywhere in the appendix, so this does not show it sits in the right table, and Table 4's cells are matched by membership on their page. Appendix Tables A and H.48 to H.51 are not in this gate.
 - **Outcome ranges.** `maintained/outcome_ranges.R` wraps `lm_robust` and records each regression's outcome. All `r nrow(ranges)` outcomes span at most one scale length, as the article says, three of them reversed to run from -1 to 0. The trace covers `code/analysis/`, not `code/analysis_s/`.
 - **Polarity.** Read in the cleaning scripts for Rahmani et al., Masoud et al., and Nyonzo et al.: each message's outcome is coded so higher means its intended direction, as the article says. The other studies were not read for polarity.
 - **Negative controls.** `r sum(controls$outcome == controls$expected)` of `r nrow(controls)` control runs behave as required. These test that the gates fire on those faults only.

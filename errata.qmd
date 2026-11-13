@@ -188,8 +188,12 @@ values_in_spans <- function(corrected, values, note) {
   spelled <- map_chr(numbers, \(x) if (str_detect(x, "^[1-9]$")) number_word(as.numeric(x)) else x)
   all(str_detect(str_c(spans, " ", note), fixed(numbers)) | str_detect(spans, fixed(spelled)))
 }
+entries <- entries |>
+  mutate(values_in_spans = pmap_lgl(list(corrected, corrected_values, note), \(corrected, values, note) {
+    if (is.na(values)) NA else values_in_spans(corrected, values, note)
+  }))
 quantities <- entries |> filter(class == "quantity")
-stopifnot(all(pmap_lgl(list(quantities$corrected, quantities$corrected_values, quantities$note), values_in_spans)),
+stopifnot(all(quantities$values_in_spans),
           all(str_count(quantities$claim_ids, ";") == str_count(quantities$corrected_values, ";")))
 
 bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")

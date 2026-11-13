@@ -1,45 +1,84 @@
-table,rows,covered
-adida_etal_2023_study_1.tex,3,3
-blair_etal_2021_study_1.tex,3,3
-blair_etal_2021_study_2.tex,1,1
-bush_jamal_2015_study_1.tex,3,3
-chauchard_badrinathan_2025_study_1.tex,6,6
-cheeseman_peiffer_2023_study_1.tex,2,2
-demora_etal_2024_study_1.tex,2,2
-demora_etal_2024_study_2.tex,6,6
-djupe_gwiasda_2010_study_1.tex,10,10
-eom_etal_2021_study_1.tex,1,1
-glazier_2013_study_1.tex,6,6
-glazier_2013_study_2.tex,6,6
-goldberg_etal_2019_study_1.tex,3,3
-grossman_nomikos_siddiqui_2023_study_1.tex,5,5
-grossman_nomikos_siddiqui_2023_study_2.tex,5,5
-hager_sharma_2023_study_1.tex,3,3
-hager_sharma_2023_study_2.tex,3,3
-hager_sharma_2023_study_3.tex,3,3
-hager_sharma_2023_study_4.tex,3,3
-harrison_michelson_2015_study_1.tex,5,5
-kane_perry_2024_study_1.tex,1,1
-margolis_2018_study_1.tex,10,10
-masoud_jamal_nugent_2016_study_1.tex,6,6
-masoud_jamal_nugent_2016_study_2.tex,6,6
-masoud_jamal_nugent_2016_study_3.tex,6,6
-masoud_jamal_nugent_2016_study_4.tex,6,6
-mcclendon_riedl_2015_study_1.tex,5,5
-mcclendon_riedl_2015_study_2.tex,5,5
-mcdaniel_miller_2018_study_1.tex,10,10
-mcdaniel_miller_2018_study_2.tex,10,10
-nyonzo_etal_2025_study_1.tex,3,3
-rahmani_etal_2025_study_1.tex,5,5
-rahmani_etal_2025_study_2.tex,5,5
-rahmani_etal_2025_study_3.tex,5,5
-rahmani_etal_2025_study_4.tex,5,5
-severson_coleman_2015_study_1.tex,10,10
-viskupic_wiltse_2022_study_1.tex,3,3
-wallsten_nteta_2016_study_1.tex,1,1
-wallsten_nteta_2016_study_2.tex,1,1
-wallsten_nteta_2016_study_3.tex,1,1
-wallsten_nteta_2016_study_4.tex,1,1
-wallsten_nteta_2016_study_5.tex,1,1
-wallsten_nteta_2016_study_6.tex,1,1
-"Table 4, cells on the page",108,108
+float,published_numbers,covered,reproduced_by_rewrite,reproduced_by_archive,plotted,plotted_reproduced,note
+Figure 1,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Table 1,NA,NA,NA,NA,NA,NA,Study manifest; not compared with the deposit's metadata
+Table 2,NA,NA,NA,NA,NA,NA,Study manifest; not compared with the deposit's metadata
+Table 3,NA,NA,NA,NA,NA,NA,Study manifest; not compared with the deposit's metadata
+Figure 2,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure 3,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure 4,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure 5,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure 6,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure 7,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure 8,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure 9,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure 10,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Table 4,108,108,NA,108,NA,NA,"Cells matched by membership among the numbers on p. 17; no independent rewrite, so the rerun of the deposit is the archive count"
+Table A.1,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Table A.2,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Table A.3,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.1,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.2,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.3,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.4,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.5,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.6,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.7,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.8,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.9,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.10,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure B.11,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Table C.4,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.5,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.6,4,4,NA,4,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.7,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.8,24,24,NA,24,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.9,8,8,NA,8,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.10,8,8,NA,8,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.11,24,24,NA,24,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.12,40,40,NA,40,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.13,4,4,NA,4,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.14,24,24,NA,24,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.15,24,24,NA,24,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.16,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.17,20,20,NA,20,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.18,20,20,NA,20,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.19,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.20,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.21,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.22,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.23,20,20,NA,20,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.24,4,4,NA,4,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.25,40,40,NA,40,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.26,24,24,NA,24,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.27,24,24,NA,24,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.28,24,24,NA,24,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.29,24,24,NA,24,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.30,20,20,NA,20,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.31,20,20,NA,20,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.32,40,40,NA,40,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.33,40,40,NA,40,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.34,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.35,20,20,NA,20,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.36,20,20,NA,20,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.37,20,20,NA,20,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.38,20,20,NA,20,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.39,40,40,NA,40,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.40,12,12,NA,12,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.41,4,4,NA,4,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.42,4,4,NA,4,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.43,4,4,NA,4,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.44,4,4,NA,4,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.45,4,4,NA,4,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Table C.46,4,4,NA,4,NA,NA,"Each row matched as a run of numbers anywhere in the appendix, not within this table; no independent rewrite, so the rerun of the deposit is the archive count"
+Figure E.12,NA,NA,NA,NA,NA,NA,Not compared with the page; errata entry 6 reports its missing Burkina Faso row
+Table F.47,NA,NA,NA,NA,NA,NA,"Transcribed for its rows, reasons, and verdicts, not its numbers"
+Figure G.13,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure G.14,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure G.15,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure G.16,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Figure H.17,NA,NA,NA,NA,NA,NA,Not compared with the page; errata entry 12 corrects its bin labels
+Figure H.18,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Table H.48,NA,NA,NA,NA,NA,NA,Not transcribed or compared with the page
+Table H.49,NA,NA,NA,NA,NA,NA,Not compared with the page; errata entry 11 corrects its title
+Table H.50,NA,NA,NA,NA,NA,NA,Not compared with the page; errata entry 11 corrects its title
+Table H.51,NA,NA,NA,NA,NA,NA,Not compared with the page; its unseeded bootstrap differs on rerun
