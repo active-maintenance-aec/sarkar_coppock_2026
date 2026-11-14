@@ -16,4 +16,4 @@ jobs:
   check:
     uses: active-maintenance-aec/maintenance/.github/workflows/check.yml@main
     with:
-      phase: 5
+      phase: 6
